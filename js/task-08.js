@@ -4,22 +4,22 @@ form.addEventListener("submit", onFormSubmit);
 
 function onFormSubmit(event) {
   event.preventDefault();
+  const {
+    elements: { email, password },
+  } = event.currentTarget;
 
-  const formElements = event.currentTarget.elements;
-
-  const mail = formElements.email.value;
-  const password = formElements.password.value;
-
-  if (mail === "" || password === "") {
+  if (email === "" || password === "") {
     return alert("Необхідно заповнити всі поля");
   }
 
   const formData = {
-    mail,
-    password,
+    email: email.value,
+    password: password.value,
   };
 
   console.log(formData);
 
   event.currentTarget.reset;
+  email.value = "";
+  password.value = "";
 }
